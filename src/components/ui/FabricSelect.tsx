@@ -64,7 +64,7 @@ export default function FabricSelect({
           ))}
         </ul>
       )}
-      <input type="hidden" name={name} value={value} required={required} />
+      <input type="hidden" name={name} value={value} required={required} id="fabric" />
     </div>
   );
 }

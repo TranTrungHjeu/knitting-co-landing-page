@@ -96,7 +96,7 @@ export default async function ProductDetailPage({
     <>
       {/* ── Breadcrumb ── */}
       <section className="bg-earth-dark fabric-texture-dark">
-        <div className="mx-auto max-w-7xl px-6 py-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
           <nav className="flex items-center gap-2 text-xs text-cream-dark/50">
             <Link href="/" className="hover:text-gold transition-colors">
               Trang chủ
@@ -112,15 +112,15 @@ export default async function ProductDetailPage({
       </section>
 
       {/* ── Hero: Gallery + Info ── */}
-      <section className="bg-cream-light fabric-texture py-12 md:py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
+      <section className="bg-cream-light fabric-texture py-8 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             {/* Gallery */}
             <ProductGallery images={product.gallery} name={product.name} />
 
             {/* Info */}
             <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-earth-dark leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-earth-dark leading-tight">
                 {product.name}
               </h1>
 
@@ -128,19 +128,19 @@ export default async function ProductDetailPage({
               <div className="mt-4 h-[3px] w-12 bg-gold" />
 
               {/* Price */}
-              <p className="mt-4 text-lg font-semibold text-gold">
+              <p className="mt-4 text-base sm:text-lg font-semibold text-gold">
                 Giá: Liên Hệ
               </p>
 
-              <p className="mt-6 text-base md:text-lg leading-relaxed text-earth-dark/70">
+              <p className="mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-earth-dark/70">
                 {product.description}
               </p>
 
               {/* CTA */}
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-earth-dark transition-all hover:bg-gold-light hover:shadow-xl"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-wider text-earth-dark transition-all hover:bg-gold-light hover:shadow-xl"
                 >
                   Yêu cầu báo giá
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -149,7 +149,7 @@ export default async function ProductDetailPage({
                 </Link>
                 <Link
                   href="/#products"
-                  className="inline-flex items-center gap-2 border border-earth/30 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-earth-dark transition-all hover:border-gold hover:text-gold"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-earth/30 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-earth-dark transition-all hover:border-gold hover:text-gold"
                 >
                   Xem tất cả sản phẩm
                 </Link>
@@ -161,31 +161,31 @@ export default async function ProductDetailPage({
 
       {/* ── Detail sections ── */}
       {product.sections.length > 0 && (
-        <section className="bg-cream py-16 md:py-24 fabric-texture">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="mx-auto max-w-3xl text-center mb-14">
+        <section className="bg-cream py-10 md:py-24 fabric-texture">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center mb-10 md:mb-14">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold mb-4">
                 Chi tiết sản phẩm
               </p>
-              <h2 className="text-2xl md:text-4xl font-bold text-earth-dark heading-decorated">
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-earth-dark heading-decorated">
                 Thông tin chi tiết về {product.name}
               </h2>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
               {product.sections.map((sec, i) => (
                 <div
                   key={i}
-                  className="relative bg-cream-light border border-earth/10 p-6 md:p-8 transition-all hover:border-gold/30 hover:shadow-lg group"
+                  className="relative bg-cream-light border border-earth/10 p-4 sm:p-6 md:p-8 transition-all hover:border-gold/30 hover:shadow-lg group"
                 >
                   {/* Gold top accent */}
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="flex items-center justify-center w-10 h-10 bg-gold/10 text-gold">
+                    <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gold/10 text-gold">
                       <SectionIcon title={sec.title} />
                     </div>
-                    <h3 className="text-lg font-bold text-earth-dark">
+                    <h3 className="text-base sm:text-lg font-bold text-earth-dark">
                       {sec.title}
                     </h3>
                   </div>
@@ -195,7 +195,7 @@ export default async function ProductDetailPage({
                       const [bold, ...rest] = line.split(": ");
                       if (rest.length > 0) {
                         return (
-                          <p key={j} className="text-sm leading-relaxed text-earth-dark/70">
+                          <p key={j} className="text-xs sm:text-sm leading-relaxed text-earth-dark/70">
                             <span className="font-semibold text-earth-dark/90">
                               {bold}:
                             </span>{" "}
@@ -204,7 +204,7 @@ export default async function ProductDetailPage({
                         );
                       }
                       return (
-                        <p key={j} className="text-sm leading-relaxed text-earth-dark/70">
+                        <p key={j} className="text-xs sm:text-sm leading-relaxed text-earth-dark/70">
                           {line}
                         </p>
                       );
@@ -219,18 +219,18 @@ export default async function ProductDetailPage({
 
       {/* ── Related products ── */}
       {related.length > 0 && (
-        <section className="bg-earth-dark py-16 md:py-24 fabric-texture-dark wave-divider-top">
-          <div className="mx-auto max-w-7xl px-6 relative z-10">
-            <div className="mx-auto max-w-2xl text-center mb-12">
+        <section className="bg-earth-dark py-10 md:py-24 fabric-texture-dark wave-divider-top">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+            <div className="mx-auto max-w-2xl text-center mb-8 md:mb-12">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold mb-4">
                 Sản phẩm liên quan
               </p>
-              <h2 className="text-2xl md:text-4xl font-bold text-cream heading-decorated">
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-cream heading-decorated">
                 Sản phẩm tương tự
               </h2>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {related.map((p) => (
                 <Link
                   key={p.slug}
@@ -248,11 +248,11 @@ export default async function ProductDetailPage({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-cream group-hover:text-gold transition-colors">
+                  <div className="p-3 sm:p-5">
+                    <h3 className="text-base sm:text-lg font-bold text-cream group-hover:text-gold transition-colors">
                       {p.name}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-cream-dark/60 line-clamp-2">
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-cream-dark/60 line-clamp-2">
                       {p.description}
                     </p>
                   </div>

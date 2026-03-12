@@ -65,7 +65,7 @@ export default function Header() {
 
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           {/* Logo + Brand */}
-          <Link href="#home" className="shrink-0" aria-label="Trang chủ">
+          <Link href="/" className="shrink-0" aria-label="Trang chủ">
             <Image
               src="/logo-hearder.svg"
               alt={COMPANY.name}
@@ -220,7 +220,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden fixed inset-0 z-[60] bg-earth-dark/95 backdrop-blur-md">
+        <div className="lg:hidden fixed inset-0 z-[60] bg-earth-dark/95 backdrop-blur-md overflow-y-auto max-h-screen">
           <div className="flex justify-end p-5">
             <button
               type="button"

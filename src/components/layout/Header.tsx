@@ -3,11 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NAV_ITEMS, COMPANY } from "@/lib/constants";
+import { NAV_ITEMS, COMPANY, PRODUCTS, ABOUT_SUBMENU } from "@/lib/constants";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [productDropdown, setProductDropdown] = useState(false);
+  const [aboutDropdown, setAboutDropdown] = useState(false);
+  const [mobileProductOpen, setMobileProductOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -59,33 +65,125 @@ export default function Header() {
 
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
           {/* Logo + Brand */}
-          <Link href="#home" className="flex items-center gap-3 shrink-0" aria-label="Trang chủ">
+          <Link href="#home" className="shrink-0" aria-label="Trang chủ">
             <Image
-              src="/logo.svg"
+              src="/logo-hearder.svg"
               alt={COMPANY.name}
-              width={80}
-              height={80}
-              className="h-12 w-12 md:h-14 md:w-14 object-contain"
+              width={160}
+              height={56}
+              className="h-10 w-auto md:h-12 object-contain"
               priority
             />
-            <div className="hidden sm:block">
-              <p className="text-sm font-bold text-earth-dark tracking-wide leading-none">{COMPANY.name}</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-gold mt-0.5">{COMPANY.slogan}</p>
-            </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-0.5" aria-label="Menu chính">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative px-4 py-2 text-[13px] font-medium uppercase tracking-wider text-earth-dark/80 transition-colors hover:text-gold group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gold transition-all duration-300 group-hover:w-3/4" />
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.href === "#about" ? (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setAboutDropdown(true)}
+                  onMouseLeave={() => setAboutDropdown(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="relative flex items-center gap-1 px-4 py-2 text-[13px] font-medium uppercase tracking-wider text-earth-dark/80 transition-colors hover:text-gold group"
+                  >
+                    {item.label}
+                    <svg
+                      className={`h-3 w-3 transition-transform duration-200 ${aboutDropdown ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gold transition-all duration-300 group-hover:w-3/4" />
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div
+                    className={`absolute left-0 top-full pt-2 transition-all duration-200 ${
+                      aboutDropdown
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    }`}
+                  >
+                    <div className="min-w-[200px] border border-cream-dark/15 bg-cream-light/98 shadow-xl backdrop-blur-md">
+                      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
+                      {ABOUT_SUBMENU.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => setAboutDropdown(false)}
+                          className="block px-5 py-2.5 text-[12px] font-medium uppercase tracking-wider text-earth-dark/70 hover:bg-gold/10 hover:text-gold transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : item.href === "#products" ? (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setProductDropdown(true)}
+                  onMouseLeave={() => setProductDropdown(false)}
+                >
+                  <Link
+                    href={item.href}
+                    className="relative flex items-center gap-1 px-4 py-2 text-[13px] font-medium uppercase tracking-wider text-earth-dark/80 transition-colors hover:text-gold group"
+                  >
+                    {item.label}
+                    <svg
+                      className={`h-3 w-3 transition-transform duration-200 ${productDropdown ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gold transition-all duration-300 group-hover:w-3/4" />
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div
+                    className={`absolute left-0 top-full pt-2 transition-all duration-200 ${
+                      productDropdown
+                        ? "opacity-100 visible translate-y-0"
+                        : "opacity-0 invisible -translate-y-2"
+                    }`}
+                  >
+                    <div className="min-w-[220px] max-h-[70vh] overflow-y-auto border border-cream-dark/15 bg-cream-light/98 shadow-xl backdrop-blur-md">
+                      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent" />
+                      {PRODUCTS.slice(0, 10).map((p) => (
+                        <Link
+                          key={p.slug}
+                          href={`/san-pham/${p.slug}`}
+                          onClick={() => setProductDropdown(false)}
+                          className="block px-5 py-2.5 text-[12px] font-medium tracking-wider text-earth-dark/70 hover:bg-gold/10 hover:text-gold transition-colors"
+                        >
+                          {p.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="relative px-4 py-2 text-[13px] font-medium uppercase tracking-wider text-earth-dark/80 transition-colors hover:text-gold group"
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-gold transition-all duration-300 group-hover:w-3/4" />
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Desktop CTA */}
@@ -137,16 +235,90 @@ export default function Header() {
           </div>
 
           <nav className="flex flex-col items-center gap-1 px-8 pt-4" aria-label="Menu di động">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="w-full text-center py-4 text-lg font-light uppercase tracking-widest text-cream/80 border-b border-cream/10 hover:text-gold transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) =>
+              item.href === "#about" ? (
+                <div key={item.href} className="w-full">
+                  <button
+                    type="button"
+                    className="w-full flex items-center justify-center gap-2 py-4 text-lg font-light uppercase tracking-widest text-cream/80 border-b border-cream/10 hover:text-gold transition-colors"
+                    onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                  >
+                    {item.label}
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-200 ${mobileAboutOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileAboutOpen && (
+                    <div className="flex flex-col items-center gap-0 pb-2">
+                      {ABOUT_SUBMENU.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="w-full text-center py-2.5 text-sm font-light uppercase tracking-widest text-cream/50 hover:text-gold transition-colors"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setMobileAboutOpen(false);
+                          }}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : item.href === "#products" ? (
+                <div key={item.href} className="w-full">
+                  <button
+                    type="button"
+                    className="w-full flex items-center justify-center gap-2 py-4 text-lg font-light uppercase tracking-widest text-cream/80 border-b border-cream/10 hover:text-gold transition-colors"
+                    onClick={() => setMobileProductOpen(!mobileProductOpen)}
+                  >
+                    {item.label}
+                    <svg
+                      className={`h-4 w-4 transition-transform duration-200 ${mobileProductOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {mobileProductOpen && (
+                    <div className="flex flex-col items-center gap-0 pb-2">
+                      {PRODUCTS.map((p) => (
+                        <Link
+                          key={p.slug}
+                          href={`/san-pham/${p.slug}`}
+                          className="w-full text-center py-2.5 text-sm font-light tracking-widest text-cream/50 hover:text-gold transition-colors"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            setMobileProductOpen(false);
+                          }}
+                        >
+                          {p.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="w-full text-center py-4 text-lg font-light uppercase tracking-widest text-cream/80 border-b border-cream/10 hover:text-gold transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
             <Link
               href="#contact"
               className="mt-8 px-10 py-3 bg-gold text-earth-dark text-sm font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors"

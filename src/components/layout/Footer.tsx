@@ -13,15 +13,15 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center">
             <Image
               src="/logo.svg"
               alt={COMPANY.name}
-              width={64}
-              height={64}
-              className="h-14 w-14 mb-4 brightness-0 invert"
+              width={120}
+              height={120}
+              className="h-28 w-28 mb-6 brightness-0 invert mx-auto"
             />
-            <p className="text-sm leading-relaxed text-cream-dark/60 max-w-xs">
+            <p className="text-sm leading-relaxed text-cream-dark/60 max-w-xs text-center">
               {COMPANY.description}
             </p>
           </div>
@@ -93,22 +93,6 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <Image
-                src="/images/hangvietnamchatluongcao.png"
-                alt="Hàng Việt Nam Chất Lượng Cao"
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain"
-              />
-              <Image
-                src="/images/madeinvietnam.svg"
-                alt="Made in Vietnam"
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain brightness-0 invert"
-              />
-            </div>
           </div>
         </div>
 

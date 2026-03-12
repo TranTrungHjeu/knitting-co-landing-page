@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { BLOG_POSTS } from "@/lib/constants";
 
 export default function Blog() {
@@ -22,9 +23,10 @@ export default function Blog() {
         {/* Blog cards */}
         <div className="grid gap-8 md:grid-cols-3">
           {BLOG_POSTS.map((post) => (
-            <article
+            <Link
               key={post.slug}
-              className="group overflow-hidden bg-cream border border-cream-dark/40 transition-all hover:border-gold/30 hover:-translate-y-1 duration-500"
+              href={`/blog/${post.slug}`}
+              className="group overflow-hidden bg-cream border border-cream-dark/40 transition-all hover:border-gold/30 hover:-translate-y-1 duration-500 rounded-lg block"
             >
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image
@@ -65,7 +67,7 @@ export default function Blog() {
                   <svg className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

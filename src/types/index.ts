@@ -5,12 +5,23 @@ export type NavItem = {
   href: string;
 };
 
+export type ProductCategory = "basic" | "special" | "pattern" | "eco";
+
+export type ProductSection = {
+  title: string;
+  content: string;
+};
+
 export type Product = {
+  slug: string;
   name: string;
   description: string;
   image: string;
+  gallery: string[];
   specs: string[];
   applications: string[];
+  category: ProductCategory;
+  sections: ProductSection[];
 };
 
 export type Stat = {
@@ -60,4 +71,17 @@ export type PricingTier = {
   name: string;
   description: string;
   features: string[];
+};
+
+export type Service = {
+  title: string;
+  description: string;
+  image: string;
+  highlights: string[];
+};
+
+export type GalleryImage = {
+  src: string;
+  alt: string;
+  span?: "wide" | "tall";
 };

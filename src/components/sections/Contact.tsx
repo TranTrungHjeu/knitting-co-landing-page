@@ -1,6 +1,11 @@
+"use client";
 import { COMPANY, CONTACT_INFO } from "@/lib/constants";
+import FabricSelect from "@/components/ui/FabricSelect";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formFabric, setFormFabric] = useState("");
+
   return (
     <section id="contact" className="relative bg-earth-dark py-24 md:py-32 fabric-texture-dark wave-divider-top">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
@@ -122,25 +127,12 @@ export default function Contact() {
                 >
                   Loại vải quan tâm
                 </label>
-                <select
-                  id="fabric"
+                <FabricSelect
+                  value={formFabric}
+                  onChange={setFormFabric}
                   name="fabric"
-                  className="w-full border border-cream/15 bg-transparent px-4 py-3 text-sm text-cream outline-none transition-colors focus:border-gold/50 [&>option]:bg-earth-dark [&>option]:text-cream"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Chọn loại vải
-                  </option>
-                  <option value="cotton">Vải thun Cotton</option>
-                  <option value="pique">Vải Cá Sấu (Pique)</option>
-                  <option value="rib">Vải Rib</option>
-                  <option value="interlock">Vải Interlock</option>
-                  <option value="tc-cvc">Vải TC / CVC</option>
-                  <option value="fleece">Vải Nỉ (Fleece)</option>
-                  <option value="poly">Vải Poly (PE)</option>
-                  <option value="mesh">Vải Mesh (Lưới)</option>
-                  <option value="other">Loại khác</option>
-                </select>
+                  required={false}
+                />
               </div>
 
               <div>

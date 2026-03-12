@@ -71,24 +71,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Certification badges — bottom right */}
-      <div className="absolute bottom-8 right-8 hidden md:flex items-center gap-3 z-10">
-        <Image
-          src="/images/hangvietnamchatluongcao.png"
-          alt="Hàng Việt Nam Chất Lượng Cao"
-          width={64}
-          height={64}
-          className="h-16 w-16 drop-shadow-2xl"
-        />
-        <Image
-          src="/images/madeinvietnam.svg"
-          alt="Made in Vietnam"
-          width={64}
-          height={64}
-          className="h-16 w-16 drop-shadow-2xl brightness-0 invert"
-        />
-      </div>
-
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream-light to-transparent z-10" />
     </section>

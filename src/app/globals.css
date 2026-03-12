@@ -15,8 +15,8 @@
   --color-charcoal: #1a1a1a;
 
   /* === Fonts === */
-  --font-sans: var(--font-be-vietnam-pro), system-ui, sans-serif;
-  --font-heading: var(--font-playfair-display), Georgia, serif;
+  --font-sans: system-ui, sans-serif;
+  --font-heading: Georgia, serif;
 }
 
 /* === FABRIC WEAVE TEXTURE (pure CSS) === */
@@ -112,14 +112,35 @@
   z-index: 1;
 }
 
+/* === CUSTOM SCROLLBAR === */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 99px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light);
+}
+
 @layer base {
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
 
   body {
     @apply bg-cream-light text-earth-dark antialiased;
+    --font-sans: var(--font-manrope), system-ui, sans-serif;
+    --font-heading: var(--font-lora), Georgia, serif;
     font-family: var(--font-sans);
   }
 
@@ -144,6 +165,17 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes productFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

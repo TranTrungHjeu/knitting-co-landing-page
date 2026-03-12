@@ -1,57 +1,35 @@
-import dynamic from "next/dynamic";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import PartnerLogos from "@/components/PartnerLogos";
-import FloatingZaloButton from "@/components/FloatingZaloButton";
-
-// Lazy load below-the-fold components for better performance
-const About = dynamic(() => import("@/components/About"), {
-  loading: () => (
-    <div className="w-full py-20 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
-
-const Products = dynamic(() => import("@/components/Products"), {
-  loading: () => (
-    <div className="w-full py-20 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
-
-const Contact = dynamic(() => import("@/components/Contact"), {
-  loading: () => (
-    <div className="w-full py-20 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
-
-const FAQ = dynamic(() => import("@/components/FAQ"), {
-  loading: () => (
-    <div className="w-full py-20 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>
-  ),
-});
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import FloatingZalo from "@/components/layout/FloatingZalo";
+import Hero from "@/components/sections/Hero";
+import Partners from "@/components/sections/Partners";
+import About from "@/components/sections/About";
+import Products from "@/components/sections/Products";
+import Process from "@/components/sections/Process";
+import Pricing from "@/components/sections/Pricing";
+import Testimonials from "@/components/sections/Testimonials";
+import Blog from "@/components/sections/Blog";
+import Contact from "@/components/sections/Contact";
+import FAQ from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
     <>
-      <AnnouncementBar />
       <Header />
-      <main style={{ scrollPaddingTop: 80, position: "relative" }}>
+      <main>
         <Hero />
-        <PartnerLogos />
+        <Partners />
         <About />
         <Products />
+        <Process />
+        <Pricing />
+        <Testimonials />
+        <Blog />
         <Contact />
         <FAQ />
       </main>
-      <FloatingZaloButton />
+      <Footer />
+      <FloatingZalo />
     </>
   );
 }

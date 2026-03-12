@@ -33,8 +33,7 @@ export const COMPANY = {
   phoneRaw: "0909045668",
   email: "detkimlienviet@gmail.com",
   zalo: "0909045668",
-  address:
-    "99/6 Trương Thị Hoa, KP3, P. Tân Thới Hiệp, Q.12, TP. Hồ Chí Minh",
+  address: "99/6 Trương Thị Hoa, KP3, P. Tân Thới Hiệp, Q.12, TP. Hồ Chí Minh",
   workingHours: "Thứ 2 – Thứ 7: 8:00 – 17:30",
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.951554627192!2d106.6713788!3d10.8653303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529db7123992b%3A0xc6cb1c49988a25a9!2zOTkvNiBUcsawxqFuZyBUaOG7iyBIb2EsIFTDom4gVGjhu5tpIEhp4buHcCwgUXXhuq1uIDEyLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2svn!4v1714400000000!5m2!1svi!2svn",
@@ -216,7 +215,8 @@ export const PRICING_TIERS: PricingTier[] = [
   },
   {
     name: "Sỉ doanh nghiệp",
-    description: "Dành cho xưởng may, doanh nghiệp sản xuất đặt hàng thường xuyên",
+    description:
+      "Dành cho xưởng may, doanh nghiệp sản xuất đặt hàng thường xuyên",
     features: [
       "Từ 100kg trở lên",
       "Giá ưu đãi theo số lượng",
@@ -227,7 +227,8 @@ export const PRICING_TIERS: PricingTier[] = [
   },
   {
     name: "OEM / Xuất khẩu",
-    description: "Sản xuất theo đơn đặt hàng riêng, đáp ứng tiêu chuẩn xuất khẩu",
+    description:
+      "Sản xuất theo đơn đặt hàng riêng, đáp ứng tiêu chuẩn xuất khẩu",
     features: [
       "Sản xuất theo thông số riêng",
       "Kiểm tra chất lượng quốc tế",

@@ -19,7 +19,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Dệt Kim Liên Việt",
+  title: "Lien Viet Knitting Co.",
   description:
     "Dệt Kim Liên Việt — 12+ năm kinh nghiệm sản xuất, cung cấp vải dệt kim chất lượng cao: vải thun Cotton, Cá Sấu, Rib, Interlock, TC, Nỉ... tại TP. Hồ Chí Minh.",
   keywords: [
